@@ -27,7 +27,7 @@ public:
 	void RemoveItem(UBasicItemDataAsset* ItemData) ;
 
 	UPROPERTY(EditDefaultsOnly, Category= "UI")
-	TSubclassOf<UInventoryWidget> InventoryWidgetClass;
+	TSubclassOf<UInventoryWidget> InventoryWidgetClass;//BP에서 세팅하고 Playercpp에서 호출해서 생성
 
 	UPROPERTY()
 	UInventoryWidget* InventoryWidget = nullptr;

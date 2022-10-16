@@ -19,7 +19,7 @@ void UInventorySlot::SetCoordinate(const int RowNo, const int ColumnNo)
 	Column = ColumnNo;
 }
 
-void UInventorySlot::EnableFillorReFill(const bool IsFill)
+void UInventorySlot::EnableFillorReFill(const bool IsFill)//해당지역이 차있는지 아닌지 확인
 {
 	if(IsFill)
 	{

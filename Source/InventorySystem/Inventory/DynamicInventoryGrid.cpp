@@ -21,7 +21,7 @@ bool UDynamicInventoryGrid::AddItem(UBasicItemDataAsset* ItemDataAsset)
 	{
 		for(const auto ItemRef : ItemDisplayContainer)
 		{
-			if(ItemRef->ItemData->GetId() == ItemDataAsset->GetId())
+			if(ItemRef->ItemData->GetId() == ItemDataAsset->GetId())//id가 일치할 경우 아이템 갯수가 증가가 가능하면 증가
 			{
 				ItemRef->ItemData->AddStack(ItemDataAsset->GetStackSize());
 				ItemRef->IncreaseCount();
@@ -78,17 +78,18 @@ void UDynamicInventoryGrid::NativePreConstruct()
 
 void UDynamicInventoryGrid::InitInventoryWidget() 
 {
+	//비우기
 	InventoryGridPanel->RowFill.Empty();
 	InventoryGridPanel->ColumnFill.Empty();
 	
 	if(UCanvasPanelSlot* CanvasPanelSlot = Cast<UCanvasPanelSlot>(GridPanelBorder->Slot))
 	{
 
-		CanvasPanelSlot->SetSize({TileSize * ColumnCount, TileSize * RowCount});
+		CanvasPanelSlot->SetSize({TileSize * ColumnCount, TileSize * RowCount});   //인벤토리 패널 크기 세팅 
 	}
 
 	int count = 0;
-	for (int Row = 0; Row < RowCount; Row++)
+	for (int Row = 0; Row < RowCount; Row++)//지정된 크기만큼 인벤토리 추가
 	{
 		if(InventoryGridPanel)
 		{
@@ -166,9 +167,9 @@ FIntPoint UDynamicInventoryGrid::GetCoordinateByIndex(const int Index) const
 
 void UDynamicInventoryGrid::SortItems()
 {
-	ClearSlots({0,0}, {RowCount, ColumnCount});
+	ClearSlots({0,0}, {RowCount, ColumnCount});//인벤토리의 모든 것 삭제
 	
-	ItemDisplayContainer.Sort([=](const auto& Left, const auto& Right)
+	ItemDisplayContainer.Sort([=](const auto& Left, const auto& Right)//람다함수를 사용하여서 인벤토리의 우선순위 정렬 // 잘 사용하면 사용자가 원하는 정렬순서 지정이 가능 할것 같음
 	{
 		return Left.GetTotalSlotForItem() > Right.GetTotalSlotForItem();
 	});

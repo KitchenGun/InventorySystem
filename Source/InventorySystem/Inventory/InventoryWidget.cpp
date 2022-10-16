@@ -18,5 +18,5 @@ void UInventoryWidget::NativeConstruct()
 
 void UInventoryWidget::OnClickSortButton()
 {
-	InventoryGridPanel->SortItems();
+	InventoryGridPanel->SortItems();//정렬 버튼 입력시 호출
 }

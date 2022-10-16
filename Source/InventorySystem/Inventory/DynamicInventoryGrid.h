@@ -73,7 +73,7 @@ private:
 	
 	void InitInventoryWidget();
 	
-	int GetFirstAvailableSlotIndex(const FIntPoint& ItemSize) const;
+	int GetFirstAvailableSlotIndex(const FIntPoint& ItemSize) const; //가리킨 곳의 인덱스 불러오기
 
 	UPROPERTY()
 	UInventoryComponent* InventoryComponent = nullptr;

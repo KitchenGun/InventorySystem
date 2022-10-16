@@ -28,7 +28,7 @@ public:
 	UInventoryComponent* InventoryComponent = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, Category= "UI")
-	TSubclassOf<UItemNameDisplayer> ItemNameWidgetClass = nullptr;
+	TSubclassOf<UItemNameDisplayer> ItemNameWidgetClass = nullptr;//상호작용에 사용되는 위젯 클래스
 
 	UPROPERTY()
 	UItemNameDisplayer* ItemName = nullptr;
@@ -54,11 +54,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void ToggleInventory();
+	void ToggleInventory();//인벤토리 키고 끄기
 	
 	void MoveRight(float Value);
 	void MoveForward(float Value);
-	void DropItem(UBasicItemDataAsset* DropItemData);
+	void DropItem(UBasicItemDataAsset* DropItemData);//떨어트린 아이템 생성
 	
 private:
 	
